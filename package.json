@@ -1,7 +1,27 @@
 {
   "name": "alcalin",
   "version": "0.1.0",
-  "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "Enzo Innocenzi",
+    "email": "enzo@innocenzi.dev",
+    "url": "https://innocenzi.dev/"
+  },
+  "repository": {
+    "url": "https://github.com/hawezo/alcalin"
+  },
+  "main": "dist/alcalin.umd.js",
+  "module": "dist/alcalin.common.js",
+  "keywords": [
+    "vue",
+    "tailwind",
+    "component",
+    "renderless",
+    "alcalin",
+    "javascript",
+    "ui",
+    "ui library"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
