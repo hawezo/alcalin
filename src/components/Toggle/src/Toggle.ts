@@ -37,7 +37,7 @@ const data = Vue.extend({
   |--------------------------------------------------------------------------
   */
   watch: {
-    opened() {
+    toggled() {
       updateListeners(this.onClickAway as UIListener, this.toggled);
     },
   },
