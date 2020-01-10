@@ -38,13 +38,13 @@ The toggle component is a simple toggleable element that can display more data.
 
 These reactive variable and methods are available in the toggle's slots.
 
-| Name              | Description                                                          | Type     | Parameters                                                          |
-| ----------------- | -------------------------------------------------------------------- | -------- | ------------------------------------------------------------------- |
-| `opened`          | A boolean value indicating if the toggle is on or off.               | Variable |                                                                     |
-| `on`              | A method to set the toggle on.                                       | Method   |                                                                     |
-| `off`             | A method to set the toggle off.                                      | Method   |                                                                     |
-| `toggle`          | A method to change the state of the toggle.                          | Method   |                                                                     |
-| `updateListeners` | A method to update the click and keyboard listeners on the document. | Method   | `listener: UIListener, shouldListen: boolean`                       |
+| Name              | Description                                                          | Type     | Parameters                                                            |
+| ----------------- | -------------------------------------------------------------------- | -------- | --------------------------------------------------------------------- |
+| `opened`          | A boolean value indicating if the toggle is on or off.               | Variable |                                                                       |
+| `on`              | A method to set the toggle on.                                       | Method   |                                                                       |
+| `off`             | A method to set the toggle off.                                      | Method   |                                                                       |
+| `toggle`          | A method to change the state of the toggle.                          | Method   |                                                                       |
+| `updateListeners` | A method to update the click and keyboard listeners on the document. | Method   | `listener: UIListener, shouldListen: boolean`                         |
 | `hasClickedAway`  | A method to check if a click has occured outside of an element.      | Method   | `element: HTMLElement \| Element \| Document, { target }: MouseEvent` |
 
 ### Events
