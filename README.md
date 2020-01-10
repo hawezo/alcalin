@@ -120,3 +120,6 @@ These reactive variable and methods are available in the toggle's slots.
 - TreeView
 - Select
 - Tags Input
+- Tabs
+- Sortable
+- Storage
