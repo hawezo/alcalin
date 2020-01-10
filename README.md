@@ -45,7 +45,7 @@ These reactive variable and methods are available in the toggle's slots.
 | `off`             | A method to set the toggle off.                                      | Method   |                                                                     |
 | `toggle`          | A method to change the state of the toggle.                          | Method   |                                                                     |
 | `updateListeners` | A method to update the click and keyboard listeners on the document. | Method   | `listener: UIListener, shouldListen: boolean`                       |
-| `hasClickedAway`  | A method to check if a click has occured outside of an element.      | Method   | `element: HTMLElement | Element | Document, { target }: MouseEvent` |
+| `hasClickedAway`  | A method to check if a click has occured outside of an element.      | Method   | `element: HTMLElement \| Element \| Document, { target }: MouseEvent` |
 
 ### Events
 
