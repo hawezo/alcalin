@@ -2,11 +2,10 @@
   <toggle v-slot="{ toggled, toggle, off }">
     <!-- Trigger -->
     <button
-      class="px-4 py-2 bg-gray-700 rounded shadow-lg focus:bg-gray-800"
+      class="px-4 py-2 bg-gray-700 rounded shadow-lg focus:bg-gray-800 text-left"
       @click="toggle"
-    >
-      Open modal
-    </button>
+      v-text="text"
+    />
 
     <!-- Content -->
     <div
@@ -48,6 +47,10 @@ export default Vue.extend({
     dismissible: {
       type: Boolean,
       default: true
+    },
+    text: {
+      type: String,
+      default: 'Popover'
     }
   }
 });
