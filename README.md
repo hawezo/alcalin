@@ -36,45 +36,100 @@ The toggle component is a simple toggleable element that can display more data.
 
 ### Slots
 
-| Name     | Description                                            |
-| -------- | ------------------------------------------------------ |
-| `opened` | A boolean value indicating if the toggle is on or off. |
-| `toggle` | A method to change the state of the toggle.            |
-| `open`   | A method to set the toggle on.                         |
-| `hide`   | A method to set the toggle off.                        |
+These reactive variable and methods are available in the toggle's slots.
+
+| Name              | Description                                                          | Type     | Parameters                                                          |
+| ----------------- | -------------------------------------------------------------------- | -------- | ------------------------------------------------------------------- |
+| `opened`          | A boolean value indicating if the toggle is on or off.               | Variable |                                                                     |
+| `on`              | A method to set the toggle on.                                       | Method   |                                                                     |
+| `off`             | A method to set the toggle off.                                      | Method   |                                                                     |
+| `toggle`          | A method to change the state of the toggle.                          | Method   |                                                                     |
+| `updateListeners` | A method to update the click and keyboard listeners on the document. | Method   | `listener: UIListener, shouldListen: boolean`                       |
+| `hasClickedAway`  | A method to check if a click has occured outside of an element.      | Method   | `element: HTMLElement | Element | Document, { target }: MouseEvent` |
 
 ### Events
 
-| Name     | Description                                | Payload               |
-| -------- | ------------------------------------------ | --------------------- |
-| `on`     | Triggered when the toggle is set to on.    | None.                 |
-| `off`    | Triggered when the toggle is set to off.   | None.                 |
-| `toggle` | Triggered when the toggle is being toggle. | `{ toggled: <bool> }` |
+| Name         | Description                                          | Payload                   |
+| ------------ | ---------------------------------------------------- | ------------------------- |
+| `on`         | Triggered when the toggle is set to on.              |                           |
+| `off`        | Triggered when the toggle is set to off.             |                           |
+| `toggle`     | Triggered when the toggle is being toggled.          | `{ toggled: <bool> }`     |
+| `click-away` | Triggered when a click occurs outside of the toggle. | `{ event: <MouseEvent> }` |
 
 ### Properties
 
 | Name        | Description                                                   | Type   | Default |
 | ----------- | ------------------------------------------------------------- | ------ | ------- |
-| `offOnBlur` | Defines if the toggle will be closed on a click outside of it | `bool` | `true`  |
+| `offOnBlur` | Defines if the toggle will be closed on a click outside of it | `bool` | `false` |
 
-### Example
+### Examples
+
+#### Simple popover
 
 ```html
 <toggle v-slot="{ toggled, toggle }">
   <div class="relative">
     <!-- Trigger -->
     <button
-      class="px-4 py-2 rounded bg-gray-700 shadow-lg focus:bg-gray-800"
+      class="px-4 py-2 bg-gray-700 rounded shadow-lg focus:bg-gray-800"
       @click="toggle"
     >
       Toggle this
     </button>
 
     <!-- Content -->
-    <div v-show="toggled" class="p-4 rounded bg-gray-600 shadow-xl mt-2">
+    <div v-show="toggled" class="p-4 mt-2 bg-gray-600 rounded shadow-xl">
       This is the content. <br />
       It's not necessarily a list, you can add anything there.
     </div>
   </div>
 </toggle>
 ```
+
+#### Simple modal
+
+```html
+<toggle v-slot="{ toggled, toggle, off }">
+  <div>
+    <!-- Trigger -->
+    <button
+      class="px-4 py-2 bg-gray-700 rounded shadow-lg focus:bg-gray-800"
+      @click="toggle"
+    >
+      Toggle this
+    </button>
+
+    <div
+      class="absolute inset-0"
+      style="background: rgba(0,0,0,.5);"
+      v-show="toggled"
+      @click="off"
+    />
+
+    <!-- Content -->
+    <div
+      v-show="toggled"
+      class="relative p-4 mt-2 bg-gray-600 rounded shadow-xl"
+    >
+      <div>
+        This is the content. <br />
+        It's not necessarily a list, you can add anything there.
+      </div>
+
+      <button
+        class="px-4 py-2 mt-3 bg-gray-700 rounded shadow-lg focus:bg-gray-800"
+        @click="toggle"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</toggle>
+```
+
+# TO-DO
+
+- ListView
+- TreeView
+- Select
+- Tags Input
