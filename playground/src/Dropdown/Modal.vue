@@ -14,7 +14,7 @@
       v-if="toggled"
     >
       <!-- Overlay - remove @click to force the click on a button -->
-      <div class="absolute inset-0 bg-black opacity-50" @click="dismissable ? off() : undefined" />
+      <div class="absolute inset-0 bg-black opacity-50" @click="dismissible ? off() : undefined" />
 
       <!-- Modal -->
       <div
@@ -45,7 +45,7 @@ import Vue from 'vue';
 export default Vue.extend({
   name: 'modal',
   props: {
-    dismissable: {
+    dismissible: {
       type: Boolean,
       default: true
     }
