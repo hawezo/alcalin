@@ -27,7 +27,7 @@ const data = Vue.extend({
      */
     offOnBlur: {
       type: Boolean,
-      default: true,
+      default: false,
     },
   },
 
@@ -51,6 +51,7 @@ const data = Vue.extend({
     onClickAway(event: MouseEvent) {
       if (hasClickedAway(this.$el, event) && this.offOnBlur) {
         this.off();
+        this.$emit('click-away', { event });
       }
     },
 
@@ -86,6 +87,10 @@ const data = Vue.extend({
       on: this.on,
       off: this.off,
       toggle: this.toggle,
+
+      // Behavior
+      updateListeners: updateListeners,
+      hasClickedAway: hasClickedAway,
     });
   },
 });
