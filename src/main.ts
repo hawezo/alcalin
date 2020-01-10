@@ -1,8 +1,16 @@
-import Vue from 'vue'
-import App from './App.vue'
+import { VueConstructor } from "vue";
+import * as components from "./components";
 
-Vue.config.productionTip = false
+const Alcalin = {
+  install(Vue: VueConstructor) {
+    Object.values(components).forEach(component => {
+      Vue.use(component);
+    });
+  }
+};
 
-new Vue({
-  render: h => h(App)
-}).$mount('#app')
+if (typeof window !== "undefined" && window.Vue) {
+  window.Vue.use(Alcalin);
+}
+
+export default Alcalin;
