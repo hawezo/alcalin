@@ -32,7 +32,7 @@ new Vue({
 
 ## Toggle
 
-The toggle component is a simple toggleable element that can display more data. It can be used to create every kind of component that requires are on/off (or open/closed) state. It can also handle clicks outside of its first child, which makes it ideal for popovers or dropdowns, but can also be used for tooltips, modals, or even collapses. 
+The toggle component is a simple toggleable element that can display more data. It can be used to create every kind of component that requires are on/off (or open/closed) state. It can also handle clicks outside of its first child, which makes it ideal for popovers or dropdowns, but can also be used for tooltips, modals, or even collapses.
 
 - [See an example](playground/assets/toggle.gif)
 
@@ -92,7 +92,10 @@ These reactive variable and methods are available in the toggle's slots.
 ```html
 <toggle v-slot="{ toggled, toggle, off }">
   <!-- Trigger -->
-  <button class="px-4 py-2 bg-gray-700 rounded shadow-lg focus:bg-gray-800" @click="toggle">
+  <button
+    class="px-4 py-2 bg-gray-700 rounded shadow-lg focus:bg-gray-800"
+    @click="toggle"
+  >
     Toggle this
   </button>
 
@@ -108,7 +111,10 @@ These reactive variable and methods are available in the toggle's slots.
         It's not necessarily a list, you can add anything there.
       </p>
 
-      <button class="self-end px-4 py-2 mt-2 bg-gray-700 rounded shadow-lg focus:bg-gray-800" @click="off">
+      <button
+        class="self-end px-4 py-2 mt-2 bg-gray-700 rounded shadow-lg focus:bg-gray-800"
+        @click="off"
+      >
         Accept
       </button>
     </div>
