@@ -1,1 +1,1 @@
-export { Dropdown } from './Dropdown';
+export { Toggle } from './Toggle';

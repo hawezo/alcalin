@@ -1,6 +1,10 @@
 import Vue, { VNode, CreateElement } from 'vue';
 import { Component } from '@/support/Component';
-import { updateListeners, hasClickedAway, UIListener } from '@/support/click-away';
+import {
+  updateListeners,
+  hasClickedAway,
+  UIListener,
+} from '@/support/click-away';
 
 const data = Vue.extend({
   /*
@@ -9,7 +13,7 @@ const data = Vue.extend({
   |--------------------------------------------------------------------------
   */
   data: () => ({
-    opened: false,
+    toggled: false,
   }),
 
   /*
@@ -19,9 +23,9 @@ const data = Vue.extend({
   */
   props: {
     /**
-     * Closes the dropdown on blur.
+     * Sets the toggle off on blur.
      */
-    closeOnBlur: {
+    offOnBlur: {
       type: Boolean,
       default: true,
     },
@@ -34,10 +38,9 @@ const data = Vue.extend({
   */
   watch: {
     opened() {
-      updateListeners(this.onClickAway as UIListener, this.opened);
-    }
+      updateListeners(this.onClickAway as UIListener, this.toggled);
+    },
   },
-  
 
   /*
   |--------------------------------------------------------------------------
@@ -46,24 +49,24 @@ const data = Vue.extend({
   */
   methods: {
     onClickAway(event: MouseEvent) {
-      if (hasClickedAway(this.$el, event) && this.closeOnBlur) {
-        this.close();
+      if (hasClickedAway(this.$el, event) && this.offOnBlur) {
+        this.off();
       }
     },
 
-    open() {
-      this.opened = true;
-      this.$emit('open');
+    on() {
+      this.toggled = true;
+      this.$emit('on');
     },
 
-    close() {
-      this.opened = false;
-      this.$emit('close');
+    off() {
+      this.toggled = false;
+      this.$emit('off');
     },
 
     toggle() {
-      this.opened = !this.opened;
-      this.$emit('toggle', { opened: this.opened });
+      this.toggled = !this.toggled;
+      this.$emit('toggle', { toggled: this.toggled });
     },
   },
 
@@ -72,22 +75,22 @@ const data = Vue.extend({
   | Render
   |--------------------------------------------------------------------------
   */
-  
+
   render(h: CreateElement): VNode {
     // @ts-ignore
     return this.$scopedSlots.default({
       // Properties
-      opened: this.opened,
+      toggled: this.toggled,
 
       // Methods
-      open: this.open,
-      close: this.close,
+      on: this.on,
+      off: this.off,
       toggle: this.toggle,
     });
   },
 });
 
-export const Dropdown: Component = {
-  name: 'dropdown',
+export const Toggle: Component = {
+  name: 'toggle',
   data,
 };

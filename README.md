@@ -30,37 +30,37 @@ new Vue({
 
 # Components
 
-## Dropdown
+## Toggle
 
-The dropdown component is a simple toggleable element that can display more data.
+The toggle component is a simple toggleable element that can display more data.
 
 ### Slots
 
-| Name     | Description                                                  |
-| -------- | ------------------------------------------------------------ |
-| `opened` | A boolean value indicating if the dropdown is opened or not. |
-| `toggle` | A method to toggle the dropdown.                             |
-| `open`   | A method to open the dropdown.                               |
-| `hide`   | A method to hide the dropdown.                               |
+| Name     | Description                                            |
+| -------- | ------------------------------------------------------ |
+| `opened` | A boolean value indicating if the toggle is on or off. |
+| `toggle` | A method to change the state of the toggle.            |
+| `open`   | A method to set the toggle on.                         |
+| `hide`   | A method to set the toggle off.                        |
 
 ### Events
 
-| Name     | Description                          | Payload              |
-| -------- | ------------------------------------ | -------------------- |
-| `open`   | Triggered when the dropdown opens.   | None.                |
-| `close`  | Triggered when the dropdown closes.  | None.                |
-| `toggle` | Triggered when the dropdown toggles. | `{ opened: <bool> }` |
+| Name     | Description                                | Payload               |
+| -------- | ------------------------------------------ | --------------------- |
+| `on`     | Triggered when the toggle is set to on.    | None.                 |
+| `off`    | Triggered when the toggle is set to off.   | None.                 |
+| `toggle` | Triggered when the toggle is being toggle. | `{ toggled: <bool> }` |
 
 ### Properties
 
-| Name          | Description                                                     | Type   | Default |
-| ------------- | --------------------------------------------------------------- | ------ | ------- |
-| `closeOnBlur` | Defines if the dropdown will be closed on a click outside of it | `bool` | `true`  |
+| Name        | Description                                                   | Type   | Default |
+| ----------- | ------------------------------------------------------------- | ------ | ------- |
+| `offOnBlur` | Defines if the toggle will be closed on a click outside of it | `bool` | `true`  |
 
 ### Example
 
 ```html
-<dropdown v-slot="{ opened, toggle }">
+<toggle v-slot="{ toggled, toggle }">
   <div class="relative">
     <!-- Trigger -->
     <button
@@ -71,10 +71,10 @@ The dropdown component is a simple toggleable element that can display more data
     </button>
 
     <!-- Content -->
-    <div v-show="opened" class="p-4 rounded bg-gray-600 shadow-xl mt-2">
+    <div v-show="toggled" class="p-4 rounded bg-gray-600 shadow-xl mt-2">
       This is the content. <br />
       It's not necessarily a list, you can add anything there.
     </div>
   </div>
-</dropdown>
+</toggle>
 ```
