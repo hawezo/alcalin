@@ -1,6 +1,7 @@
 import { VueConstructor } from 'vue';
 import { Component } from '@/support/Component';
 import * as components from '@/components';
+import * as clickAway from '@/support/click-away';
 
 const Alcalin = {
   install(Vue: VueConstructor) {
@@ -20,3 +21,5 @@ if ('undefined' !== typeof window && window.Vue) {
 }
 
 export default Alcalin;
+export { components as Components };
+export { clickAway as ClickAway };
