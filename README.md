@@ -38,12 +38,12 @@ The toggle component is a simple toggleable element that can display more data.
 
 These reactive variable and methods are available in the toggle's slots.
 
-| Name              | Description                                                          | Type     | Parameters                                                            |
-| ----------------- | -------------------------------------------------------------------- | -------- | --------------------------------------------------------------------- |
-| `opened`          | A boolean value indicating if the toggle is on or off.               | Variable |                                                                       |
-| `on`              | A method to set the toggle on.                                       | Method   |                                                                       |
-| `off`             | A method to set the toggle off.                                      | Method   |                                                                       |
-| `toggle`          | A method to change the state of the toggle.                          | Method   |                                                                       |
+| Name     | Description                                            | Type     | Parameters |
+| -------- | ------------------------------------------------------ | -------- | ---------- |
+| `opened` | A boolean value indicating if the toggle is on or off. | Variable |            |
+| `on`     | A method to set the toggle on.                         | Method   |            |
+| `off`    | A method to set the toggle off.                        | Method   |            |
+| `toggle` | A method to change the state of the toggle.            | Method   |            |
 
 ### Events
 
@@ -68,21 +68,19 @@ These reactive variable and methods are available in the toggle's slots.
 #### Simple popover
 
 ```html
-<toggle v-slot="{ toggled, toggle }">
-  <div class="relative">
-    <!-- Trigger -->
-    <button
-      class="px-4 py-2 bg-gray-700 rounded shadow-lg focus:bg-gray-800"
-      @click="toggle"
-    >
-      Toggle this
-    </button>
+<toggle v-slot="{ toggled, toggle }" :off-on-blur="true">
+  <!-- Trigger -->
+  <button
+    class="px-4 py-2 bg-gray-700 rounded shadow-lg focus:bg-gray-800"
+    @click="toggle"
+  >
+    Toggle this
+  </button>
 
-    <!-- Content -->
-    <div v-show="toggled" class="p-4 mt-2 bg-gray-600 rounded shadow-xl">
-      This is the content. <br />
-      It's not necessarily a list, you can add anything there.
-    </div>
+  <!-- Content -->
+  <div class="absolute p-4 mt-2 bg-gray-600 rounded shadow-xl" v-if="toggled">
+    This is the content. <br />
+    It's not necessarily a list, you can add anything there.
   </div>
 </toggle>
 ```
@@ -91,37 +89,25 @@ These reactive variable and methods are available in the toggle's slots.
 
 ```html
 <toggle v-slot="{ toggled, toggle, off }">
-  <div>
-    <!-- Trigger -->
-    <button
-      class="px-4 py-2 bg-gray-700 rounded shadow-lg focus:bg-gray-800"
-      @click="toggle"
-    >
-      Toggle this
-    </button>
+  <!-- Trigger -->
+  <button class="px-4 py-2 bg-gray-700 rounded shadow-lg focus:bg-gray-800" @click="toggle">
+    Toggle this
+  </button>
 
-    <div
-      class="absolute inset-0"
-      style="background: rgba(0,0,0,.5);"
-      v-show="toggled"
-      @click="off"
-    />
+  <!-- Content -->
+  <div class="absolute inset-0 flex items-center justify-center" v-if="toggled">
+    <!-- Overlay - remove @click to force the click on a button -->
+    <div class="absolute inset-0 bg-black opacity-50" @click="off" />
 
-    <!-- Content -->
-    <div
-      v-show="toggled"
-      class="relative p-4 mt-2 bg-gray-600 rounded shadow-xl"
-    >
-      <div>
+    <!-- Modal -->
+    <div class="absolute flex flex-col p-4 mt-2 bg-gray-600 rounded shadow-xl">
+      <p>
         This is the content. <br />
         It's not necessarily a list, you can add anything there.
-      </div>
+      </p>
 
-      <button
-        class="px-4 py-2 mt-3 bg-gray-700 rounded shadow-lg focus:bg-gray-800"
-        @click="toggle"
-      >
-        Close
+      <button class="self-end px-4 py-2 mt-2 bg-gray-700 rounded shadow-lg focus:bg-gray-800" @click="off">
+        Accept
       </button>
     </div>
   </div>
