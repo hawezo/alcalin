@@ -57,10 +57,14 @@ export const wrapSlot = (
     ...(vm.wrapOptions || wrapOptions),
   };
 
+  // Get a list of VNodes from the slot name and the give it the given properties.
+  // If there wasn't anything return undefined so we can wrap it.
   const slot = vm.$scopedSlots[slotName]
     ? vm.$scopedSlots[slotName]!(props)
     : undefined;
 
+  // If the VNodes are not undefined and doesn't need to be wrapped,
+  // return them. Else, wrap them with the given options and return the wrapper.
   if (slot && slot.length === 1) {
     return slot[0];
   } else {
