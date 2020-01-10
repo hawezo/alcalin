@@ -34,7 +34,7 @@ new Vue({
 
 The toggle component is a simple toggleable element that can display more data. It can be used to create every kind of component that requires are on/off (or open/closed) state. It can also handle clicks outside of its first child, which makes it ideal for popovers or dropdowns, but can also be used for tooltips, modals, or even collapses.
 
-- [See an example](playground/assets/toggle.gif)
+- [See an example](https://raw.githubusercontent.com/hawezo/alcalin/master/playground/assets/toggle.gif)
 
 ### Slots
 
