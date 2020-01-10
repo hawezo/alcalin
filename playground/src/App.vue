@@ -6,16 +6,16 @@
         <div class="relative">
           <!-- Trigger -->
           <button
-            class="px-4 py-2 rounded bg-gray-700 shadow-lg"
+            class="px-4 py-2 rounded bg-gray-700 shadow-lg focus:bg-gray-800"
             @click="toggle"
           >
-            Open dropdown
+            Toggle this
           </button>
 
           <!-- Content -->
           <div v-show="opened" class="p-4 rounded bg-gray-600 shadow-xl mt-2">
-            This is the dropdown content. <br/>
-            <a href="https://google.fr">Google</a>
+            This is the content. <br/>
+            It's not necessarily a list, you can add anything there.
           </div>
         </div>
 
