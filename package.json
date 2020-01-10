@@ -1,17 +1,31 @@
 {
   "name": "alcalin",
   "version": "0.0.1",
-  "license": "MIT",
   "author": {
     "name": "Enzo Innocenzi",
     "email": "enzo@innocenzi.dev",
     "url": "https://innocenzi.dev/"
   },
-  "repository": {
-    "url": "https://github.com/hawezo/alcalin"
+  "scripts": {
+    "serve": "vue-cli-service serve playground/src/main.ts",
+    "build": "vue-cli-service build --target lib --name alcalin src/index.ts",
+    "lint": "vue-cli-service lint"
   },
   "main": "dist/alcalin.umd.js",
   "module": "dist/alcalin.common.js",
+  "dependencies": {
+    "core-js": "^3.4.4",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.7.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.7.5",
+    "@vue/cli-plugin-babel": "^4.1.2",
+    "@vue/cli-plugin-typescript": "^4.1.2",
+    "@vue/cli-service": "^4.1.2",
+    "typescript": "^3.7.4",
+    "vue-template-compiler": "^2.6.10"
+  },
   "keywords": [
     "vue",
     "tailwind",
@@ -22,22 +36,8 @@
     "ui",
     "ui library"
   ],
-  "scripts": {
-    "serve": "vue-cli-service serve playground/src/main.ts",
-    "build": "vue-cli-service build --target lib --name alcalin src/index.ts",
-    "lint": "vue-cli-service lint"
-  },
-  "dependencies": {
-    "core-js": "^2.6.5",
-    "vue": "^2.6.10"
-  },
-  "devDependencies": {
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.7.4",
-    "@babel/plugin-proposal-optional-chaining": "^7.7.5",
-    "@vue/cli-plugin-babel": "^3.12.0",
-    "@vue/cli-plugin-typescript": "^3.12.0",
-    "@vue/cli-service": "^3.12.0",
-    "typescript": "^3.7.4",
-    "vue-template-compiler": "^2.6.10"
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/hawezo/alcalin"
   }
 }
