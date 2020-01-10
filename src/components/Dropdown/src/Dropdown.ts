@@ -63,7 +63,7 @@ const data = Vue.extend({
 
     toggle() {
       this.opened = !this.opened;
-      this.$emit('toggle', this.opened);
+      this.$emit('toggle', { opened: this.opened });
     },
   },
 
