@@ -2,9 +2,11 @@
   <div id="#app" class="w-full">
     <div class="max-w-xl p-4 mx-auto" style="height: 400px;">
       
-      <modal :dismissable="true" />
-
-      <popover class="mt-2" />
+      <div class="flex">
+        <modal :dismissable="true" />
+        <popover text="On click" class="ml-2" />
+        <popover text="On hover" class="ml-2" trigger="hover" />
+      </div>
 
       <p class="mt-4">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae
