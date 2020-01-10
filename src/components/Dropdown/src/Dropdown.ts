@@ -46,7 +46,7 @@ const data = Vue.extend({
   */
   methods: {
     onClickAway(event: MouseEvent) {
-      if (hasClickedAway(this.$el, event)) {
+      if (hasClickedAway(this.$el, event) && this.closeOnBlur) {
         this.close();
       }
     },
