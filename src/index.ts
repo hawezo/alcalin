@@ -1,12 +1,18 @@
 import { VueConstructor } from 'vue';
-import * as components from './components';
+import { Component } from '@/support/Component';
+import * as components from '@/components';
 
 const Alcalin = {
-  install (Vue: VueConstructor) {
-    Object.values(components).forEach((component: any) => {
-      Vue.use(component);
+  install(Vue: VueConstructor) {
+    Object.values(components).forEach((component: Component) => {
+      Vue.use({
+        ...component,
+        install: (Vue: VueConstructor) => {
+          Vue.component(component.name, component.data);
+        },
+      });
     });
-  }
+  },
 };
 
 if ('undefined' !== typeof window && window.Vue) {
