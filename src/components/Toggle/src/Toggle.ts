@@ -5,6 +5,7 @@ import {
   hasClickedAway,
   UIListener,
 } from '@/support/click-away';
+import { wrapSlot, WrapOptions } from '@/support/slot-wrap';
 
 const data = Vue.extend({
   /*
@@ -29,6 +30,14 @@ const data = Vue.extend({
       type: Boolean,
       default: false,
     },
+
+    /**
+     * A tag for when the
+     */
+    tag: {
+      type: String,
+      default: 'div',
+    },
   },
 
   /*
@@ -39,6 +48,24 @@ const data = Vue.extend({
   watch: {
     toggled() {
       updateListeners(this.onClickAway as UIListener, this.toggled);
+      this.$emit('toggled', { toggled: this.toggled });
+    },
+  },
+  mounted() {
+    this.$emit('mounted', this);
+  },
+
+  /*
+  |--------------------------------------------------------------------------
+  | Computed properties
+  |--------------------------------------------------------------------------
+  */
+  computed: {
+    wrapOptions(): WrapOptions {
+      return {
+        tag: this.tag,
+        data: {},
+      };
     },
   },
 
@@ -76,10 +103,8 @@ const data = Vue.extend({
   | Render
   |--------------------------------------------------------------------------
   */
-
   render(h: CreateElement): VNode {
-    // @ts-ignore
-    return this.$scopedSlots.default({
+    return wrapSlot(this, h, {
       // Properties
       toggled: this.toggled,
 
@@ -87,10 +112,6 @@ const data = Vue.extend({
       on: this.on,
       off: this.off,
       toggle: this.toggle,
-
-      // Behavior
-      updateListeners: updateListeners,
-      hasClickedAway: hasClickedAway,
     });
   },
 });

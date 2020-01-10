@@ -44,23 +44,24 @@ These reactive variable and methods are available in the toggle's slots.
 | `on`              | A method to set the toggle on.                                       | Method   |                                                                       |
 | `off`             | A method to set the toggle off.                                      | Method   |                                                                       |
 | `toggle`          | A method to change the state of the toggle.                          | Method   |                                                                       |
-| `updateListeners` | A method to update the click and keyboard listeners on the document. | Method   | `listener: UIListener, shouldListen: boolean`                         |
-| `hasClickedAway`  | A method to check if a click has occured outside of an element.      | Method   | `element: HTMLElement \| Element \| Document, { target }: MouseEvent` |
 
 ### Events
 
 | Name         | Description                                          | Payload                   |
 | ------------ | ---------------------------------------------------- | ------------------------- |
-| `on`         | Triggered when the toggle is set to on.              |                           |
-| `off`        | Triggered when the toggle is set to off.             |                           |
-| `toggle`     | Triggered when the toggle is being toggled.          | `{ toggled: <bool> }`     |
+| `on`         | Triggered when the `on` method is called.            |                           |
+| `off`        | Triggered when the `off` method is called.           |                           |
+| `toggle`     | Triggered when the `toffle` method is called.        | `{ toggled: <bool> }`     |
+| `mounted`    | Triggered when the component is mounted.             | `{ event: <Component> }`  |
+| `toggled`    | Triggered when the component is being toggled.       | `{ toggled: <bool> }`     |
 | `click-away` | Triggered when a click occurs outside of the toggle. | `{ event: <MouseEvent> }` |
 
 ### Properties
 
-| Name        | Description                                                   | Type   | Default |
-| ----------- | ------------------------------------------------------------- | ------ | ------- |
-| `offOnBlur` | Defines if the toggle will be closed on a click outside of it | `bool` | `false` |
+| Name        | Description                                                         | Type     | Default |
+| ----------- | ------------------------------------------------------------------- | -------- | ------- |
+| `offOnBlur` | Defines if the toggle will be closed on a click outside of it.      | `bool`   | `false` |
+| `tag`       | Defines the fallback wrapper tag if you set multiple root elements. | `string` | `div`   |
 
 ### Examples
 
