@@ -131,3 +131,4 @@ These reactive variable and methods are available in the toggle's slots.
 - Tabs
 - Sortable
 - Storage
+- Pagination
