@@ -2,9 +2,10 @@
   <toggle v-slot="{ toggled, toggle, on, off }" :off-on-blur="true">
     <!-- Trigger -->
     <button
-      class="px-4 py-2 bg-gray-700 rounded shadow-lg focus:bg-gray-800" ref="trigger"
-      @mouseenter="hoverMode ? on() : undefined" 
-      @mouseleave="hoverMode ? off() : undefined" 
+      class="px-4 py-2 bg-gray-700 rounded shadow-lg focus:bg-gray-800"
+      ref="trigger"
+      @mouseenter="hoverMode ? on() : undefined"
+      @mouseleave="hoverMode ? off() : undefined"
       @click="clickMode ? toggle() : undefined"
       v-text="text"
     />
@@ -30,8 +31,8 @@ export default Vue.extend({
     },
     text: {
       type: String,
-      default: 'Popover'
-    }
+      default: 'Popover',
+    },
   },
   computed: {
     hoverMode() {
@@ -39,7 +40,7 @@ export default Vue.extend({
     },
     clickMode() {
       return 'click' === this.trigger;
-    }
-  }
+    },
+  },
 });
 </script>

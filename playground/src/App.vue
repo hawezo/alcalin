@@ -10,7 +10,11 @@
 
         <div class="flex">
           <modal text="Dismissible modal" />
-          <modal text="Non-dismissible modal" class="ml-2" :dismissible="false" />
+          <modal
+            text="Non-dismissible modal"
+            class="ml-2"
+            :dismissible="false"
+          />
           <popover text="On click" class="ml-2" />
           <popover text="On hover" class="ml-2" trigger="hover" />
         </div>
@@ -42,3 +46,9 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style lang="postcss">
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+</style>
