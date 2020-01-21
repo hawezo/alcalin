@@ -95,6 +95,13 @@ const data = Vue.extend({
         force: this.wrap,
       };
     },
+
+    observerPayload(): any {
+      return {
+        element: this.$el,
+        context: this,
+      };
+    },
   },
 
   /*
@@ -166,8 +173,7 @@ const data = Vue.extend({
           this.observer.observe(this.$el);
           this.$emit('observe', {
             observer: this.observer,
-            element: this.$el,
-            context: this,
+            ...this.observerPayload,
           });
         }
       });
@@ -177,10 +183,7 @@ const data = Vue.extend({
       if (this.observer) {
         this.observer.disconnect();
         this.observer = null;
-        this.$emit('disconnect', {
-          element: this.$el,
-          context: this,
-        });
+        this.$emit('disconnect', this.observerPayload);
       }
     },
   },
