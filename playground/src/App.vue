@@ -36,12 +36,10 @@
         style="margin: 125% 0;"
       >
         <!-- This square won't be displayed if it's not appearing in the viewport -->
-        <div
-          class="flex items-center justify-center w-32 h-32 bg-red-500 rounded-lg shadow-lg"
+        <img
+          src="https://images.unsplash.com/photo-1577848494430-b2cd73e4d5ac?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=2000&ixlib=rb-1.2.1&q=80&w=2000"
           v-if="isVisible"
-        >
-          I am a square
-        </div>
+        />
       </observer>
     </div>
   </div>
