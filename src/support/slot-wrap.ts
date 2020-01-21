@@ -10,6 +10,7 @@ declare module 'vue/types/vue' {
 const defaultWrapOptions: WrapOptions = {
   tag: 'div',
   data: {},
+  force: false
 };
 
 /**
@@ -34,6 +35,14 @@ export interface WrapOptions {
    * @memberof WrapOptions
    */
   data?: VNodeData;
+
+  /**
+   * Force the wrapping.
+   *
+   * @type {Boolean}
+   * @memberof WrapOptions
+   */
+  force?: Boolean;
 }
 
 /**
@@ -65,7 +74,7 @@ export const wrapSlot = (
 
   // If the VNodes are not undefined and doesn't need to be wrapped,
   // return them. Else, wrap them with the given options and return the wrapper.
-  if (slot && slot.length === 1) {
+  if (!options.force && slot && slot.length === 1) {
     return slot[0];
   } else {
     return h(options.tag, options.data, [slot]);
