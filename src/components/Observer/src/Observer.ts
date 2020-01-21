@@ -9,7 +9,8 @@ const data = Vue.extend({
   |--------------------------------------------------------------------------
   */
   data: () => ({
-    observer: null,
+    observer: (null as unknown) as IntersectionObserver | null,
+    entry: (null as unknown) as IntersectionObserverEntry | null,
     visible: false,
   }),
 
@@ -123,16 +124,17 @@ const data = Vue.extend({
       /// @ts-ignore
       this.observer = new IntersectionObserver(
         entries => {
-          let entry: IntersectionObserverEntry | undefined = entries[0];
+          this.entry = entries[0];
 
           if (entries.length > 1) {
-            entry = entry ?? entries.find(e => e.isIntersecting);
+            this.entry = this.entry ?? entries.find(e => e.isIntersecting);
           }
 
           this.visible =
-            entry?.isIntersecting && entry.intersectionRatio >= this.threshold;
+            this.entry?.isIntersecting &&
+            this.entry.intersectionRatio >= this.threshold;
 
-          const payload = { entry, element: entry.target };
+          const payload = { entry: this.entry, element: this.entry.target };
 
           if (this.visible) {
             // Emits the event
@@ -161,7 +163,6 @@ const data = Vue.extend({
 
       this.$nextTick(() => {
         if (this.observer) {
-          // @ts-ignore
           this.observer.observe(this.$el);
           this.$emit('observe', {
             observer: this.observer,
@@ -174,7 +175,6 @@ const data = Vue.extend({
 
     destroyObserver() {
       if (this.observer) {
-        // @ts-ignore
         this.observer.disconnect();
         this.observer = null;
         this.$emit('disconnect', {
@@ -194,6 +194,7 @@ const data = Vue.extend({
     return wrapSlot(this, h, {
       // Properties
       isVisible: this.visible,
+      entry: this.entry,
     });
   },
 });
