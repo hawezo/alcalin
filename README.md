@@ -38,7 +38,7 @@ The toggle component is a simple toggleable element that can display more data. 
 
 ### Slots
 
-These reactive variable and methods are available in the toggle's slots.
+These reactive variables and methods are available in the toggle's slots.
 
 | Name     | Description                                            | Type     | Parameters |
 | -------- | ------------------------------------------------------ | -------- | ---------- |
@@ -120,6 +120,53 @@ These reactive variable and methods are available in the toggle's slots.
     </div>
   </div>
 </toggle>
+```
+
+## Observer
+
+The observer component is a wrapper that will observe its content to determine if they are visible in the viewport. It uses the `IntersectionObserver`, which [isn't available on IE11](https://caniuse.com/#feat=intersectionobserver).
+
+### Slots
+
+These reactive variables and methods are available in the observer's slots.
+
+| Name      | Description                                                                        | Type     | Parameters |
+| --------- | ---------------------------------------------------------------------------------- | -------- | ---------- |
+| `visible` | A boolean value indicating if the content is visible.                              | Variable |            |
+| `entry`   | An `IntersectionObserverEntry` object corresponding to the element. Can be `null`. | Variable |            |
+
+### Events
+
+- **`VisibilityPayload`**: `{ entry: IntersectionObserverEntry, element: Element }`
+- **`ObserverPayload`**: `{ element: Element, context: Vue }`
+
+| Name         | Description                                    | Payload                                                   |
+| ------------ | ---------------------------------------------- | --------------------------------------------------------- |
+| `visible`    | Triggered when the contnet becomes visible.    | `VisibilityPayload`                                       |
+| `invisible`  | Triggered when the contnet becomes invisible.  | `VisibilityPayload`                                       |
+| `mounted`    | Triggered when the component is mounted.       | `{ event: <Component> }`                                  |
+| `observe`    | Triggered when the observer starts to observe. | `{ observer?: IntersectionObserver, ...ObserverPayload }` |
+| `disconnect` | Triggered when the observer is disconnected.   | `ObserverPayload`                                         |
+
+### Properties
+
+| Name          | Description                                                                                                                                           | Type       | Default |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------- |
+| `root`        | The element that is used as the viewport for checking visibility of the target. Must be the ancestor of the target. Defaults to the browser viewport. | `Element`  | `null`  |
+| `rootMargin`  | Margin around the root.                                                                                                                               | `Stirng`   | `0`     |
+| `threshold`   | A threshold of 1.0 means that when 100% of the target is visible within the element specified by the root option, the observer is triggered.          | `Number`   | `0`     |
+| `onVisible`   | A callback to call when the content becomes visible.                                                                                                  | `Function` |         |
+| `onInvisible` | A callback to call when the content becomes invisible.                                                                                                | `Function` |         |
+| `wrap`        | Determines if the content of the `Observer` component must always be wrapped into `tag`.                                                              | `Boolean`  | `true`  |
+| `tag`         | Defines the fallback wrapper tag if you set multiple root elements.                                                                                   | `string`   | `div`   |
+
+### Example
+
+```html
+<observer v-slot="{ isVisible }">
+  <!-- This content won't be loaded unless it's on the screen -->
+  <img src="bigstuff.webp" v-if="isVisible" />
+</observer>
 ```
 
 # TO-DO
