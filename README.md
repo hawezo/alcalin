@@ -2,7 +2,8 @@
 
 Alcalin is a [renderless](https://adamwathan.me/renderless-components-in-vuejs/) Vue component library. It only brings functionality to Vue, without styling.
 
-> `!` This library is not ready for production.
+> `!` This library is not ready for production at all.
+> I'm waiting for Vue 3 before continuing it.
 
 # Installation
 
@@ -180,6 +181,4 @@ These reactive variables and methods are available in the observer's slots.
 - Tags Input
 - Tabs
 - Sortable
-- Storage
-- Pagination
-- Context Menu
+- Context Menu?
